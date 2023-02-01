@@ -1,0 +1,12 @@
+---
+metadata:
+  id: "POL5"
+  name: Ensure AWS IAM Policy documents do not have statements granting any s3 GetObject action that have a * in any of the specified resources for that statement"
+  category: "IAM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - data.aws_iam_policy_document
+  attribute: "statement[?(@.actions[*] == 's3:GetObject' || @.actions[*] == 's3:Get*' || @.actions[*] == 's3:*' || @.actions[*] == '*') && (@.effect == Allow)].resources[*]"
+  operator: jsonpath_not_contains
+  value: "*"

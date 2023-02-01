@@ -1,0 +1,13 @@
+---
+metadata:
+  id: "POL3"
+  name: "test"
+  category: "IAM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+  - "data.aws_iam_policy_document"
+  attribute: #"statement[?(@.effect = Allow)].actions[*]"
+    "statement[?(@.effect = xyz)].actions[*]"
+  operator: "jsonpath_not_contains"
+  value: "iam:*"
