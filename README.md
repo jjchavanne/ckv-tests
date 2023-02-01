@@ -1,7 +1,10 @@
 # ckv-tests
 
+Ensure you have installed [Checkov](https://www.checkov.io/2.Basics/Installing%20Checkov.html)
+
 ## Notes for creating custom Checkov policies and testing.  
 
+#### If using this repo, please note for each folder I ran tests, you'll notice multiple yaml files for policies.  For each case, I always started small and then built it up, often times running into something that only partially worked.  However I didn't want to lose work, so I created new files and ran new tests, preserving each file.  In summary use the last file in each folder as what should have been my final working test.
 
 ### Test Policies locally:
 
