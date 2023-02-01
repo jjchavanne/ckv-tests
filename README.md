@@ -17,7 +17,7 @@ checkov -f iam.tf --external-checks-dir policies --framework terraform -c POL1
 	2. Python: https://www.checkov.io/6.Contribution/Contribute%20Python-Based%20Policies.html
 2. Choose the next available CKV ID based on current docs and enter this in the id field in your policy check file:
 		https://www.checkov.io/5.Policy%20Index/all.html
-3. See Running Tests and follow the setup.  I followed the pipenv commands:    
+3. See [Running Tests](https://github.com/bridgecrewio/checkov/blob/main/CONTRIBUTING.md#running-tests) and follow the setup.  I followed the pipenv commands:    
 ```
 pip install pipenv
 pipenv install --dev
