@@ -1,0 +1,19 @@
+---
+metadata:
+  id: "POL1"
+  name: "Ensure AWS IAM policy does not allow full IAM privileges"
+  category: "IAM"
+definition:
+  or:
+  - cond_type: "attribute"
+    resource_types:
+    - "aws_iam_policy"
+    attribute: "policy.Statement[?(@.Effect == Allow)].Action[*]"
+    operator: "jsonpath_not_contains"
+    value: "iam:*"
+  - cond_type: "attribute"
+    resource_types:
+    - "data.aws_iam_policy_document"
+    attribute: "(statement[?(@.effect == 'Allow')] | statement[?(@.effect == 'blah')]).actions[*]"
+    operator: "jsonpath_not_contains"
+    value: "iam:*"

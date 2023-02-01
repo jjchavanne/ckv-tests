@@ -1,0 +1,11 @@
+---
+metadata:
+  id: "POL5"
+  name: "S3 bucket policy allows HTTP requests. Add an explicit Deny rule to HTTP requests to comply with the policy. For more information visit: https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule/"
+  category: "storage"
+definition:
+  cond_type: "attribute"
+  resource_types: "aws_s3_bucket_policy"
+  attribute: policy.Statement[?(@.Effect == Allow)].Condition.*.Bool.*.aws:SecureTransport
+  operator: jsonpath_not_equals
+  value: false
