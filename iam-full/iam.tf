@@ -343,6 +343,21 @@ data "aws_iam_policy_document" "pass1" {
   }
 }
 
+# Test IAM Policy document data type with no "effect" field which is default allow - pass
+data "aws_iam_policy_document" "pass2" {
+  statement {
+    sid = "1"
+    actions = [
+      "s3:ListAllMyBuckets",
+      "s3:GetBucketLocation",
+    ]
+
+    resources = [
+      "arn:aws:s3:::*",
+    ]
+  }
+}
+
 # Test IAM Policy document data type - fail
 data "aws_iam_policy_document" "fail1" {
   statement {
@@ -382,6 +397,20 @@ data "aws_iam_policy_document" "fail1" {
   # Allow IAM Permissions
   statement {
     effect = "Allow"
+    actions = [
+      "iam:*",
+    ]
+
+    resources = [
+      "arn:aws:iam:::/home/&{aws:username}",
+      "arn:aws:iam:::/home/&{aws:username}/*",
+    ]
+  }
+}
+
+# Test IAM Policy document data type with no "effect" field which is default allow - fail
+data "aws_iam_policy_document" "fail2" {
+  statement {
     actions = [
       "iam:*",
     ]
