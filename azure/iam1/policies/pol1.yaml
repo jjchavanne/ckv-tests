@@ -1,0 +1,12 @@
+---
+metadata:
+  id: "POL1"
+  name: Ensure Azure subscriptions with custom roles are not overly permissive"
+  category: "IAM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - azurerm_role_definition
+  attribute: "permissions.*.actions.*"
+  operator: not_contains
+  value: "*"
