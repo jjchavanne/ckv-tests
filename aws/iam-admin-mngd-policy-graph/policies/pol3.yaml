@@ -1,0 +1,21 @@
+---
+metadata:
+  id: "POL3"
+  name: "Ensure AWS Managed Administrator Access IAM policy is not used."
+  category: "IAM"
+definition:
+  and:
+    - or:
+        cond_type: attribute
+        resource_types:
+        - "data.aws_iam_policy"
+        attribute: "arn"
+        operator: not_contains
+        value: "AdministratorAccess" 
+    - or:
+        cond_type: attribute
+        resource_types:
+        - "data.aws_iam_policy"
+        attribute: "name"
+        operator: not_equals
+        value: "AdministratorAccess" 

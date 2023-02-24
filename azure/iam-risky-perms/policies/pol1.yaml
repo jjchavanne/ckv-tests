@@ -1,0 +1,16 @@
+---
+metadata:
+  id: "POL1"
+  name: Ensure Azure subscriptions with custom roles are not assinged risky permissions that could lead to privilege escalation"
+  category: "IAM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - azurerm_role_definition
+  attribute: "permissions.*.actions.*"
+  operator: not_subset
+  value: 
+    - "Microsoft.Authorization/elevateAccess/action"
+    - "Microsoft.Authorization/roleManagementPolicies/write"
+
+
