@@ -19,7 +19,7 @@ resource "azurerm_role_definition" "example" {
 }
 
 # Test with risky permissions - Fail
-resource "azurerm_role_definition" "example" {
+resource "azurerm_role_definition" "example-fail" {
   name        = "my-custom-role"
   scope       = data.azurerm_subscription.primary.id
   description = "This is a custom role created via Terraform"
@@ -38,7 +38,7 @@ resource "azurerm_role_definition" "example" {
 }
 
 # Test with risky permissions - Fail 2
-resource "azurerm_role_definition" "example2" {
+resource "azurerm_role_definition" "example-fail2" {
   name        = "my-custom-role"
   scope       = data.azurerm_subscription.primary.id
   description = "This is a custom role created via Terraform"
